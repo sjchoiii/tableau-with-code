@@ -7,13 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#000000" />
   <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+  <script type='text/javascript'>
+    document.getElementById("btn").addEventListener('click',switchDash);
+    function switchDash(){
+      var newSrc = "https://prod-apnortheast-a.online.tableau.com/t/datapuree/views/04u_16938229556140/01u_1/bc5b47d0-e640-4bf5-9951-1f07713d1618/b057d529-a0e0-4c5f-8030-75d39b044e6d";
+      var tableauViz = document.getElementById("tableauViz");
+      tableauViz.setAttribute("src", newSrc);
+
+      var newVal = "1호점(마포직영점)";
+      var filter = document.getElementById("filter");
+      filter.setAttribute("value", newVal);
+    }
+  </script>
   <title>React - Tableau JS API</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div>  
+    <button id="btn" onclick="switchDash();">test</button>
+  </div>
   <div id="root">
-    <tableau-viz id="tableauViz" src="https://prod-apnortheast-a.online.tableau.com/t/datapuree/views/91uDemo/01uPOS"></tableau-viz>
+    <tableau-viz id="tableauViz" src="https://prod-apnortheast-a.online.tableau.com/t/datapuree/views/91uDemo/01uPOS">
+      <viz-filter id="filter" field="매장" value="글고운점"></viz-filter> 
+    </tableau-viz>
   </div>
 
   <!-- api v1 code -->
